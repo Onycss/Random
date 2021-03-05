@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+ <title>Random</title>
+  </head>
+
+  <style>
+  body
+  {
+    background-color: dodgerblue;
+    margin: 0;
+    padding: 0;
+  }
+  button
+  {
+    cursor: not-allowed;
+  }
+  </style>
+  <body>
+  <header>
+     <div class="pricing-header text-center bg-dark text-white">
+    <h1 class="display-4">Random</h1>
+  </div>
+  </header>
+ <main class="container text-white ">
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+  <div class="col">
+  <div class="card mb-4 shadow-sm bg-dark">
+  <div class="card-header">Random number</div>
+  <div class="card-body">
+  <div class="mb-3">
+    <label for="Fnumber" class="form-label">First number</label>
+    <input type="number" class="form-control" id="Fnumber" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="Lnumber" class="form-label">Last number</label>
+    <input type="number" class="form-control" id="Lnumber">
+  </div>
+   <p id="rezultat"></p>
+  <button type="submit" class="btn btn-primary" onclick="Random()">Submit</button>
+  </div>
+</div>
+</div>
+ <div class="col">
+  <div class="card mb-4 shadow-sm bg-dark">
+  <div class="card-header">Password Generator</div>
+  <div class="card-body">
+     <div class="mb-3">
+    <label for="pgen" class="form-label">Password lenghts</label>
+    <input type="number" class="form-control" id="pgen" aria-describedby="emailHelp">
+  </div>
+  <p id="passgen"></p>
+  <button type="submit" class="btn btn-primary" onclick="Pgen()">Submit</button>
+  </div>
+</div>
+</div>
+<div class="col">
+  <div class="card mb-4 shadow-sm bg-dark">
+  <div class="card-header">Random Range Number</div>
+  <div class="card-body">
+    <div class="mb-3">
+    <label for="FFnumber" class="form-label">First number</label>
+    <input type="number" class="form-control" id="FFnumber" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="LLnumber" class="form-label">Last number</label>
+    <input type="number" class="form-control" id="LLnumber">
+  </div>
+   <p id="rezultatr"></p>
+  <button type="submit" class="btn btn-primary" onclick="RRange()">Submit</button>
+  </div>
+</div>
+</div>
+  </div>
+</div>
+</div>
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center text-white">
+<div class="col">
+  <div class="card mb-4 shadow-sm bg-dark">
+  <div class="card-body">
+  <div class="card-header bg-dark">Random Dice</div>
+  <div class="row row-cols-1 row-cols-md-2 mb-2 text-center">
+   <p id="dice1">D1</p> 
+   <p id="dice2">D2</p>
+ </div>
+    <button type="submit" class="btn btn-primary" onclick="Dice()">Submit</button>
+  </div>
+  </div>
+</div>
+</div>
+  </div>
+</div>
+</div>
+</div>
+</main>
+  </body>
+  <script>
+    function Random()
+    {
+    var x= document.getElementById("Fnumber").value;
+    var y= document.getElementById("Lnumber").value;
+    document.getElementById("rezultat").innerHTML = getRndInteger(parseInt(x), parseInt(y));
+  }
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+function Dice()
+{
+    document.getElementById("dice1").innerHTML = getRndInteger(1,6);
+    document.getElementById("dice2").innerHTML = getRndInteger(1,6);
+}
+function RRange()
+{ 
+   var a= document.getElementById("FFnumber").value;
+    var b= document.getElementById("LLnumber").value;
+    var x = getRndInteger(parseInt(a), parseInt(b));
+    var y = getRndInteger(parseInt(x), parseInt(b));
+    document.getElementById("rezultatr").innerHTML = "Your range is: "+ x + "-"+y;
+}
+function Pgen()
+{
+  var p= document.getElementById("pgen").value;
+ document.getElementById("passgen").innerHTML = generatePassword(parseInt(p));
+}
+function generatePassword(passwordLength) {
+  var numberChars = "0123456789";
+  var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lowerChars = "abcdefghijklmnopqrstuvwxyz";
+  var allChars = numberChars + upperChars + lowerChars;
+  var randPasswordArray = Array(passwordLength);
+  randPasswordArray[0] = numberChars;
+  randPasswordArray[1] = upperChars;
+  randPasswordArray[2] = lowerChars;
+  randPasswordArray = randPasswordArray.fill(allChars, 3);
+  return shuffleArray(randPasswordArray.map(function(x) { return x[Math.floor(Math.random() * x.length)] })).join('');
+}
+
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
+}
+
+  </script>
+</html>
