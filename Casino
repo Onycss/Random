@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+.numberbox
+{
+  position:fixed;
+  top:30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  margin: 15px;
+  background: #dde1e7;
+  border-radius: 5px;
+  box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, .288);
+  font: sans-serif;
+}
+
+h1
+{
+  position: fixed;
+  top:-2px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: grey;
+  font-size: 120px;
+}
+h2
+{
+  position: fixed;
+  top:45%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+}
+.buttons
+{
+  position: fixed;
+  top:55%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+}
+input
+{
+  background: #dde1e7;
+  width: 240px;
+  height: 50px;
+  border: none;
+  outline: none;
+  padding: 0 25px;
+  border-radius: 25px 0 0 25px;
+  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+}
+button
+{
+  position: relative;
+  border-radius: 0 25px 25px 0;
+  left: -10px;
+  width: 150px;
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: #ffc107;
+  color: #ffff;
+}
+
+</style>
+
+<body style="background-color: #dde1e7">
+  <div class="numberbox">
+    <h1 id="numberbox"></h1>
+  </div>
+  <div class="money"><h2 id="money">0$</h2></div>
+  <div class="buttons">
+      <input type="number" id="number">
+      <button onclick="Bet()">Bet</button>
+  </div>
+
+<script>
+var suma = 0;
+function Bet()
+{
+
+if( document.getElementById("number").value === '' ){
+      alert('Nu ai pariat!');
+    }
+else if (document.getElementById("number").value > 6 ) alert('Valoare maxima 6');
+else
+{
+var bet = document.getElementById("number").value;
+var x = Math.floor(Math.random() * 6) + 1;
+document.getElementById("numberbox").innerHTML = x;
+if (bet == x) suma+=50;
+else  suma-=10;
+}
+document.getElementById("money").innerHTML = suma + "$";
+
+}
+
+</script>
+</body>
+</html>
