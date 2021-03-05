@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="navbar.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+</head>
+<style>
+body
+{
+  //background: #031321;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('back.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+
+.box
+{
+ width: 300px;
+ padding: 40px;
+ background: rgba(0, 0, 0, 0.8);
+ color: #fff;
+ top: 50%;
+ left: 50%;
+ position: absolute;
+ transform: translate(-50%,-50%);
+ text-align: center;
+}
+.box h1
+{
+ color:white;
+ text-transform: uppercase;
+ font-weight: 500;
+ 
+
+}
+.box input[type="text"],.box input[type="password"]
+{
+ border:0;
+ background: none;
+ display: block;
+ margin: 20px auto;
+ text-align: center;
+ border: 2px solid #3498db;
+ padding: 14px 10px;
+ width: 200px;
+ outline: none;
+ color: white;
+ border-radius: 24px;
+ transition: 0.25s;
+ 
+}
+
+.box input[type="text"]:focus,.box input[type="password"]:focus
+{
+ width: 280px; 
+ border-color: #2ecc71;
+}
+.submit
+{
+ border: 0;
+ background: none;
+ display: block;
+ margin: 20px auto;
+ text-align: center;
+ border: 2px solid #2ecc71;
+ padding: 14px 40px;
+ outline: none;
+ color: white;
+ border-radius:24px;
+ transition: 0.25s;
+ cursor: pointer;
+}
+.checkmark {
+  position: absolute;
+  color: blue;
+  top: 200px;
+  right: 9px;	
+  height: 20px;
+  width: 20px; 
+  cursor: pointer;
+}
+
+</style>
+<body>
+<div class="navbar">
+  <a href="site.html"><i class="fa fa-fw fa-home"></i> Home</a>
+  <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
+  <a href="contact.html"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+  <a class="active"  href="login.html"><i class="fa fa-fw fa-user"></i>Login</a>
+<div class="box">
+ <h1>Login</h1>
+<form>
+ <input type="text" id="text" name="" placeholder="Username">
+ <input type="password"  name="" id="show" placeholder="Password">
+ <input type="checkbox"  onclick="myFunction()" name="">
+ <button class="submit" type="submit" onclick="alerta()" >Login</button>
+ </form>
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("show");
+  if (x.type == "password")x.type = "text";
+   else x.type = "password";
+  
+}
+function alerta() {
+  var x = document.getElementById("text").value;
+  var y = document.getElementById("show").value;
+  alert("Ai introdus:" + " "  + x + " " + y);
+}
+</script>
+</body>
+</html>
